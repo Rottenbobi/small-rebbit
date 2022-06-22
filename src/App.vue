@@ -1,7 +1,8 @@
 <template>
-  <h1>
+  <!-- <h1>
     你
-  </h1>
+  </h1> -->
+  123
 </template>
 
 <script lang="ts" setup>

@@ -5,6 +5,9 @@ import App from './App.vue'
 import { createPinia } from 'pinia'
 const app = createApp(App)
 
+// 初始化样式
+import 'normalize.css/normalize.css'
+
 const pinia = createPinia()
 
 app.use(pinia)
