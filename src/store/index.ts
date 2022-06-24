@@ -1,12 +1,7 @@
-import { defineStore } from 'pinia'
+import categroy from "./modules/categroy";
 
-
-export const MainStore = defineStore('main', {
-  state: () => {
-    return {  }
-  },
-
-  actions: {
-
-  },
-})
+export default function useStore() {
+  return {
+   categroy: categroy()
+  }
+}

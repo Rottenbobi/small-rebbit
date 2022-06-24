@@ -4,7 +4,12 @@ const routes = createRouter({
     routes: [
         {
             path:'/',
-            component:() => import('@/view/layout/index.vue')
+            component:() => import('@/view/layout/index.vue'),
+            children: [
+                { path:'/category/:id',
+                component:() =>import('@/view/category/index.vue') 
+            }
+            ]
         }
     ]
 })

@@ -3,7 +3,7 @@
   <AppTopnav></AppTopnav>
 <AppHeader></AppHeader>
 
-
+<router-view></router-view>
 <AppFooter></AppFooter>
 
 
