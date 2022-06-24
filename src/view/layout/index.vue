@@ -1,5 +1,7 @@
-<template>
- <router-view></router-view>
+<template>  
+<div>
+    布局页
+</div>
 </template>
  
 <script lang='ts' setup>
