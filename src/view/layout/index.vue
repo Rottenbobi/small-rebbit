@@ -1,10 +1,13 @@
 <template>  
 <div>
-    布局页
+  <AppTopnav></AppTopnav>
+
 </div>
 </template>
  
 <script lang='ts' setup name="Layout">
+import AppTopnav from './components/app-top-nav.vue'
+
 import { ref,reactive } from 'vue'
 
 </script>
