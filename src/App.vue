@@ -1,8 +1,5 @@
 <template>
-  <!-- <h1>
-    你
-  </h1> -->
-  123
+  <div></div>
 </template>
 
 <script lang="ts" setup>
@@ -13,11 +10,10 @@ const test = async () => {
 }
 test()
 </script>
- 
- <style lang="less" scoped>
 
- h1 {
+<style lang="less" scoped>
+h1 {
   background-color: @warnColor;
   .hoverShadow();
 }
- </style>
+</style>
