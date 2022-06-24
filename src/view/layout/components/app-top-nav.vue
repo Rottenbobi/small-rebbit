@@ -1,5 +1,7 @@
-<script lang="ts" setup name="顶部导航
-"></script>
+<script lang="ts" setup name="顶部导航">
+import AppHeader from './components/app-header.vue'
+
+</script>
 
 <template>
   <nav class="app-topnav">
@@ -53,4 +55,5 @@
     }
   }
 }
+
 </style>
