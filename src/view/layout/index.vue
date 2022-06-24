@@ -4,7 +4,7 @@
 </div>
 </template>
  
-<script lang='ts' setup>
+<script lang='ts' setup name="Layout">
 import { ref,reactive } from 'vue'
 
 </script>
