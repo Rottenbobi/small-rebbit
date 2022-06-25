@@ -14,7 +14,8 @@ import 'normalize.css'
 // router
 import router from './router'
 
-
+import zj from '@/components/index'
+app.use(zj)
 // 基本样式
 import '@/assets/styles/common.less'
 app.use(pinia)
