@@ -1,6 +1,8 @@
 <script lang="ts" setup>
-  import HomeBanner from './components/home-banner.vue'
-  import HomeCategory from './components/home-category.vue'
+import HomeBanner from './components/home-banner.vue'
+import HomeCategory from './components/home-category.vue'
+import HomeNew from './components/home-new.vue'
+import HomeHot from './components/home-hot.vue'
 </script>
 
 <template>
@@ -11,7 +13,10 @@
         <HomeCategory />
         <!-- banner轮播图 -->
         <HomeBanner />
+        <HomeNew></HomeNew>
+        <HomeHot></HomeHot>
       </div>
+     
     </div>
   </div>
 </template>

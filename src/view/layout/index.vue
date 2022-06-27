@@ -2,9 +2,9 @@
   <AppTopnav></AppTopnav>
   <AppHeader></AppHeader>
   <AppHeaderSticky></AppHeaderSticky>
-  <div style="height: 1000px">
+  
     <router-view></router-view>
-  </div>
+
 
   <AppFooter></AppFooter>
 </template>

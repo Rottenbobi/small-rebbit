@@ -6,7 +6,7 @@ const { categroy } = useStore()
 let goodsarr = ref<cateD.IGoods[]>([])
 let goodId = ref(-1)
 const getCurrentGoods = (i: cateD.IGoods[], id: number) => {
-  console.log(i)
+  // console.log(i)
   goodsarr.value = i
   goodId.value = id
 }

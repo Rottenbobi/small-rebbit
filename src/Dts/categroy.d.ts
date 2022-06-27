@@ -22,3 +22,27 @@ export interface IGoods {
   picture: string
   price: string
 }
+
+export interface Ibanner {
+  hrefUrl: string
+  id: string
+  imgUrl: string
+  type: string
+}
+
+export interface IhomeNews {
+  desc: string
+  discount: null
+  id: string
+  name: string
+  orderNum: number
+  picture: string
+  price: string
+}
+
+export interface IhomeHot  {
+    alt: string;
+    id: string;
+    picture: string;
+    title: string;
+}
