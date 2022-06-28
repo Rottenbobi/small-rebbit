@@ -1,6 +1,7 @@
 <template>
-  <ul class="goods-list">
-    <li v-for="item in goods" :key="item.id">
+ <transition>
+  <ul class="goods-list" v-if="goods.length > 0">
+    <li v-for="item in goods" :key="item.id" >
       <RouterLink to="/">
         <img
           :src="item.picture"
@@ -13,6 +14,19 @@
       </RouterLink>
     </li>
   </ul>
+   <div class="home-skeleton" v-else>
+          <div
+            class="item"
+            v-for="i in 4"
+            :key="i"
+            :style="{ backgroundColor: '#f0f9f4' }"
+          >
+            <XtxSkeleton bg="#e4e4e4" :width="306" :height="306" />
+            <XtxSkeleton bg="#e4e4e4" :width="160" :height="24" />
+            <XtxSkeleton bg="#e4e4e4" :width="120" :height="24" />
+          </div>
+        </div>
+  </transition>
 </template>
 
 <script lang="ts" setup>
@@ -44,6 +58,22 @@ defineProps<
     }
     .price {
       color: @priceColor;
+    }
+  }
+}
+</style>
+
+<style scoped lang="less">
+.home-skeleton {
+  width: 1240px;
+  height: 406px;
+  display: flex;
+  justify-content: space-between;
+  .item {
+    width: 306px;
+    .xtx-skeleton ~ .xtx-skeleton {
+      display: block;
+      margin: 16px auto 0;
     }
   }
 }

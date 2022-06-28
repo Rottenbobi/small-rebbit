@@ -1,20 +1,31 @@
 <template>
-   <div>
-    <div style="height:2000px"></div>
-    <img ref="target" src="" alt="" v-lazy="src" />
-    <img ref="target" src="" alt="" v-lazy="src1">
-
+<button @click="showDiv = true">showDiv</button>
+<transition>
+   <div v-if="showDiv" @click="showDiv = false">
    </div>
+</transition>
+
 </template>
  
 <script lang='ts' setup>
 import { ref,reactive } from 'vue'
-import {useIntersectionObserver} from '@vueuse/core'
-const src = 'https://ts3.cn.mm.bing.net/th?id=OIP-C.Zxtf2X2EddV-g7hKyBhilAHaQB&w=161&h=350&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2'
-const src1 = 'https://ts3.cn.mm.bing.net/th?id=2'
-
+const showDiv = ref(false)
 </script>
  
-<style scoped>
+<style scoped >
+div{
+  width: 100px;
+  height: 100px;   
+  background-color: green;
+}
+.v-enter-from , .v-leave-to {
+  opacity: 0;
+}
+.v-enter-active , .v-leave-active {
+ transition: all 0.8s linear
+}
 
+.v-enter-to , .v-leave-from {
+   opacity: 1;
+}
 </style>

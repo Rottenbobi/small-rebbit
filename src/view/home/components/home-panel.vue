@@ -15,6 +15,7 @@ defineProps<{
         <slot name="more"> </slot>
       </div>
       <slot name="body"> </slot>
+
     </div>
   </div>
 </template>

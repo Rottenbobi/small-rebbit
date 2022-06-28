@@ -8,6 +8,8 @@ export default defineStore('home', {
       bannerList: [] as Ibanner[],
       newGoods: [] as cateD.IhomeNews[],
       hotGoods: [] as cateD.IhomeHot[],
+      branList: [] as cateD.IhomeBrand[],
+      products: [] as cateD.IhomeProduct[],
     }
   },
   // 也可以定义为
@@ -27,5 +29,14 @@ export default defineStore('home', {
       const res = await request.get<IAxios<cateD.IhomeHot[]>>('/home/hot')
       this.hotGoods = res.data.result
     },
+
+    async getBrandList() {
+      const res = await request.get<IAxios<cateD.IhomeBrand[]>>('/home/brand')
+      this.branList = res.data.result
+    },
+    async getProductList() {
+      const res = await request.get<IAxios<cateD.IhomeProduct[]>>('/home/goods')
+      this.products = res.data.result
+    }
   },
 })
