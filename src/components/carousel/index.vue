@@ -132,7 +132,6 @@ play()
       transition: all 0.5s;
       &.prev {
         left: 20px;
-        margin-left: 235px;
       }
       &.next {
         right: 20px;

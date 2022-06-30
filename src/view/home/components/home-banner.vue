@@ -19,5 +19,8 @@ home.getbannerList()
     top: 0;
     z-index: 98;
     background-color: pink;
+    /deep/.prev{
+      margin-left: 235px;
+    }
   }
 </style>

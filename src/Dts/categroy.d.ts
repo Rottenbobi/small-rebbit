@@ -21,6 +21,14 @@ export interface IGoods {
   orderNum: null
   picture: string
   price: string
+  parentName: string
+  saleProperties: {
+    id: string
+    name: string
+    properties: { id: string; name: string }[]
+  }[]
+  brands:any[]
+  goods:any[]
 }
 
 export interface Ibanner {
@@ -57,17 +65,25 @@ export interface IhomeBrand {
   type: null
 }
 export interface IhomeProduct {
-id:string
-name:string
-picture: string
-saleInfo: string
-children: IhomeProductChild[]
-goods:IGoods[]
+  id: string
+  name: string
+  picture: string
+  saleInfo: string
+  children: IhomeProductChild[]
+  goods: IGoods[]
 }
 
 export interface IhomeProductChild {
   id: string
   layer: number
   name: string
-  parent:null
+  parent: null
+}
+// 顶级分类类型
+export interface ITopCategory {
+  id: string
+  name: string
+  picture: string
+  children: IGoods[]
+  goods: IGoods[]
 }

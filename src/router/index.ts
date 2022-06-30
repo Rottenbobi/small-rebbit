@@ -1,6 +1,9 @@
 import { createWebHistory, createRouter } from 'vue-router'
 const routes = createRouter({
   history: createWebHistory(),
+  scrollBehavior(){
+    return { top:0 }
+  },
   routes: [
     {
       path: '/',
@@ -15,7 +18,7 @@ const routes = createRouter({
           component: () => import('@/view/category/index.vue'),
         },
         {
-          path: '/category/sub/:id',
+          path: '/category/sub/:subid',
           component: () => import('@/view/category/sub.vue'),
         },
         
