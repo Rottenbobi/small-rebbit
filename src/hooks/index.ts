@@ -1,19 +1,17 @@
+// hooks函数一般都以use开头
+// 用来进行复用状态和逻辑
 import { useIntersectionObserver } from '@vueuse/core'
 import { ref } from 'vue'
+// 封装懒加载数据
 export function useLazyData(callback: () => void) {
   const target = ref(null)
-  console.log(target)
-  const { stop } = useIntersectionObserver(
-    target,
-    ([{ isIntersecting }]) => {
-      console.log(123)
-      if (isIntersecting) {
-        callback()
-        stop()
-      }
-    },
-    { threshold: 0 },
-  )
 
+  const { stop } = useIntersectionObserver(target, ([{ isIntersecting }]) => {
+    if (isIntersecting) {
+      // 做你想做的事情
+      callback()
+      stop()
+    }
+  })
   return target
 }

@@ -1,23 +1,18 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-// pinia
-import { createPinia } from 'pinia'
-const app = createApp(App)
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
-const pinia = createPinia()
-pinia.use(piniaPluginPersistedstate)
-
-// 初始化样式
+// 引入normalize, 将不同浏览器的样式进行统一重置
 import 'normalize.css'
-
-// router
-import router from './router'
-
-import zj from '@/components/index'
-app.use(zj)
-// 基本样式
+// 引入common公共样式
 import '@/assets/styles/common.less'
-app.use(pinia)
+import router from '@/router'
+import { createPinia } from 'pinia'
+import XtxUi from '@/components'
+
+const pinia = createPinia()
+const app = createApp(App)
+
+app.use(XtxUi)
 app.use(router)
+app.use(pinia)
 app.mount('#app')

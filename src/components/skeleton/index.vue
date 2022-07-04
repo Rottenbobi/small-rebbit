@@ -1,5 +1,6 @@
 <script lang="ts" setup name="XtxSkeleton">
 defineProps({
+  // 控制背景色
   bg: {
     type: String,
     default: '#efefef'

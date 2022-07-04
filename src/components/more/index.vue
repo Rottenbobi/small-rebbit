@@ -1,10 +1,7 @@
 <script lang="ts" setup name="XtxMore">
-defineProps({
-  to: {
-    type: String,
-    required: true,
-  },
-})
+defineProps<{
+  to: string
+}>()
 </script>
 <template>
   <RouterLink :to="to" class="xtx-more">

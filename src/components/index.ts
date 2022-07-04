@@ -1,18 +1,38 @@
+// App 是一个类型: app实例类型
+import { App } from 'vue'
 import XtxSkeleton from '@/components/skeleton/index.vue'
 import XtxCarousel from '@/components/carousel/index.vue'
-import XtxMore from './more/index.vue'
-import Bread from './bread/index.vue'
-import BreadItem from './bread/Item.vue'
-import XtxGoodItem from './gooditem/index.vue'
+import XtxMore from '@/components/more/index.vue'
+import XtxBread from '@/components/bread/index.vue'
+import XtxBreadItem from '@/components/breadItem/index.vue'
+import XtxGoodsItem from '@/components/goodsItem/index.vue'
+import XtxCity from '@/components/city/index.vue'
+import XtxNumberBox from '@/components/number/index.vue'
+import XtxButton from '@/components/button/index.vue'
+
 import { useIntersectionObserver } from '@vueuse/core'
 import defaultImg from '@/assets/images/200.png'
-import { App } from 'vue'
-const arr = [XtxSkeleton, XtxCarousel, XtxMore, Bread, BreadItem , XtxGoodItem]
-export default function (app: App<Element>) {
-  arr.forEach((item) => {
-    app.component(item.name, item)
+const components = [
+  XtxSkeleton,
+  XtxCarousel,
+  XtxMore,
+  XtxBread,
+  XtxBreadItem,
+  XtxGoodsItem,
+  XtxCity,
+  XtxNumberBox,
+  XtxButton,
+]
+
+// app.use的install函数
+export default function (app: App) {
+  // 用来注册组件
+  components.forEach((comp) => {
+    app.component(comp.name, comp)
   })
+  // 自定义指令 输入框获取焦点
   app.directive('lazy', {
+    // 参数-: 该指令绑定的元素
     mounted(el, binding) {
       const { stop } = useIntersectionObserver(el, ([{ isIntersecting }]) => {
         if (isIntersecting) {
@@ -20,8 +40,8 @@ export default function (app: App<Element>) {
           el.onerror = function () {
             el.src = defaultImg
           }
+          stop()
         }
-        stop()
       })
     },
   })

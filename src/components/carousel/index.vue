@@ -1,49 +1,58 @@
 <script lang="ts" setup name="XtxCarousel">
+import { HomeBanner } from '@/types/data'
 import { ref } from 'vue'
-import { Ibanner } from '@/Dts/categroy'
 
 const {
-  banner,
+  banners,
   duration = 2000,
   autoplay = false,
+  isShowIndicator = true
 } = defineProps<{
-  banner: Ibanner[]
+  banners: HomeBanner[]
   duration?: number
-  autoplay: boolean
+  autoplay?: boolean
+  isShowIndicator?: boolean
 }>()
-let active = ref(0)
+
+// 记录当前显示哪张轮播图的索引
+const active = ref(0)
 let setId: number | null = null
-// 下一张
-const next = () => {
-  active.value = (active.value + 1) % banner.length
-}
-// 上一张
-const prev = () => {
-  active.value = (active.value - 1 + banner.length) % banner.length
-}
+// 自动播放轮播图
 const play = () => {
   if (!autoplay) return
   setId = window.setInterval(() => {
     next()
   }, duration)
 }
-const stop = () => {
-  if (setId) {
-    clearInterval(setId)
-    setId = null
-  }
+
+// 下一张的逻辑
+const next = () => {
+  active.value = (active.value + 1) % banners.length
 }
+
+// 上一张的逻辑
+const prev = () => {
+  // console.log(active.value - 1 + banners.length)
+  active.value = (active.value - 1 + banners.length) % banners.length
+}
+
+// 暂停
+const stopBanners = () => {
+  clearInterval(setId!)
+}
+
 play()
 </script>
 
 <template>
-  <div class="xtx-carousel" @mouseenter="stop" @mouseleave="play">
+  <div class="xtx-carousel" @mouseleave="play" @mouseenter="stopBanners">
     <ul class="carousel-body">
+      <!-- fade: 显示图片 -->
       <li
-        v-for="(item, index) in banner"
+        v-for="(item, index) in banners"
         :key="item.id"
-        :class="{ fade: index === active }"
         class="carousel-item"
+        :class="{ fade: index === active }"
       >
         <RouterLink to="/">
           <img :src="item.imgUrl" alt="" />
@@ -56,9 +65,9 @@ play()
     <a href="javascript:;" class="carousel-btn next" @click="next">
       <i class="iconfont icon-angle-right"></i>
     </a>
-    <div class="carousel-indicator">
+    <div v-show="isShowIndicator" class="carousel-indicator">
       <span
-        v-for="(item, index) in banner"
+        v-for="(item, index) in banners"
         :key="item.id"
         :class="{ active: index === active }"
       ></span>

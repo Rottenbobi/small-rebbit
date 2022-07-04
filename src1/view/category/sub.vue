@@ -56,32 +56,32 @@ watchEffect(() => {
       </div>
       <!--  -->
       <!-- 商品区域 -->
-<div class="goods-list">
-  <!-- 排序区域 -->
-  <div class="sub-sort">
-    <div class="sort">
-      <a href="javascript:;" class="active">默认排序</a>
-      <a href="javascript:;">最新商品</a>
-      <a href="javascript:;">最高人气</a>
-      <a href="javascript:;">评论最多</a>
-      <a href="javascript:;">
-        价格排序
-        <i class="arrow up" />
-        <i class="arrow down" />
-      </a>
-    </div>
-  </div>
-  <!-- 商品列表 -->
-  <ul>
-    <li v-for="goods in categroy.SubList.goods" :key="goods">
+      <div class="goods-list">
+        <!-- 排序区域 -->
+        <div class="sub-sort">
+          <div class="sort">
+            <a href="javascript:;" class="active">默认排序</a>
+            <a href="javascript:;">最新商品</a>
+            <a href="javascript:;">最高人气</a>
+            <a href="javascript:;">评论最多</a>
+            <a href="javascript:;">
+              价格排序
+              <i class="arrow up" />
+              <i class="arrow down" />
+            </a>
+          </div>
+        </div>
+        <!-- 商品列表 -->
+        <ul>
+          <li v-for="goods in categroy.SubList.goods" :key="goods">
       <GoodItem
 
         :goods="goods"
       />
 
-    </li>
-  </ul>
-</div>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -179,5 +179,4 @@ watchEffect(() => {
     }
   }
 }
-
 </style>

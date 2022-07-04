@@ -1,12 +1,5 @@
+<script setup lang="ts"></script>
 <template>
- <router-view></router-view>
+  <router-view></router-view>
 </template>
- 
-<script lang='ts' setup>
-import { ref,reactive } from 'vue'
-
-</script>
- 
-<style scoped>
-
-</style>
+<style></style>

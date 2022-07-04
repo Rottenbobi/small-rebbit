@@ -1,58 +1,60 @@
+import { SubCategory } from './../../types/category.d'
 import { defineStore } from 'pinia'
 import request from '@/utils/request'
-import * as CateD from '@/Dts/categroy'
-import * as Const from '@/constant'
-const defaultCate = Const.topCategory.map((item, index) => {
+import { CategoryItem, IAxsRes } from '@/types/data'
+import { topCategory } from '@/constant/home'
+import { TopCategory } from '@/types/category'
+const defaultCategory = topCategory.map((item) => {
   return {
-    name: item,
-    id: index,
+    name: item
   }
 })
 export default defineStore('categroy', {
   state: () => {
     return {
-      List: defaultCate as CateD.Ilist[],
-      topCategory: {} as CateD.ITopCategory,
-      SubList: {} as CateD.IGoods,
+      list: defaultCategory as CategoryItem[],
+      topCategory: {} as TopCategory,
+      subCategory: {} as SubCategory
     }
   },
-  // 也可以定义为
-  // state: () => ({ count: 0 })
   actions: {
-    async getList() {
-      const res = await request.get<CateD.IAxios<CateD.Ilist[]>>(
-        '/home/category/head',
+    // 获取分类数据
+    async getCategory() {
+      // console.log('获取分类数据')
+      // request的get是一个泛型函数,泛型类型用于约束res.data的数据类型的
+      const res = await request.get<IAxsRes<CategoryItem[]>>(
+        '/home/category/head'
       )
       res.data.result.forEach((item) => {
         item.open = false
       })
-      this.List = res.data.result
+      this.list = res.data.result
     },
-    showSub(id: number) {
-      const findItems = this.List.find((item) => item.id === id)
-      if (findItems) {
-        findItems.open = true
+    // 打开二级分类
+    toggleSub(id: number, open: boolean): void {
+      const findItem = this.list.find((item) => item.id === id)
+      if (findItem) {
+        findItem.open = open
       }
     },
-    HideSub(id: number) {
-      const findItems = this.List.find((item) => item.id === id)
-      if (findItems) {
-        findItems.open = false
-      }
-    },
+    // 获取顶级分类
     async getTopCategory(id: string) {
-      // console.log(id);
-      const res = await request.get<CateD.IAxios<CateD.ITopCategory>>(
-        `/category?id=${id}`,
-      )
+      const res = await request.get<IAxsRes<TopCategory>>('/category?id=' + id)
       this.topCategory = res.data.result
     },
-    async getSubcategory(id: string) {
-      const res = await request.get<CateD.IAxios<CateD.IGoods>>(
-        `/category/sub/filter?id=${id}`,
+    // 获取二级类目详情
+    async getSubCategory(id: string) {
+      // TopCategory 类型不正确 ❌
+      const res = await request.get<IAxsRes<SubCategory>>(
+        '/category/sub/filter?id=' + id
       )
-      // console.log(res)
-      this.SubList = res.data.result
-    },
-  },
+      this.subCategory = res.data.result
+    }
+    // hideSub(id: number) {
+    //   const findItem = this.list.find((item) => item.id === id)
+    //   if (findItem) {
+    //     findItem.open = false
+    //   }
+    // }
+  }
 })
